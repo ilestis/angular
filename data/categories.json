@@ -1,0 +1,11 @@
+[
+    {"name": "Pictures", "url": "pictures",
+     "sub": [
+            {"name": "People", "url": "pictures/people"},
+            {"name": "Cosplay", "url": "pictures/cosplay"}
+        ]
+    },
+    {"name": "Videos", "url": "videos"},
+    {"name": "About", "url": "about"},
+    {"name": "Contact", "url": "contact"}
+]
