@@ -1,0 +1,10 @@
+<h1><a href="/pictures">Pictures</a> &gt; {{album.name}}</h1>
+
+<div class="row picture-row" ng-repeat="picture in album.pictures">
+	<div class="span9">
+		<img src="/img/albums/{{album.id}}/{{picture}}.jpg" class="img-polaroid">
+	</div>
+
+</div>
+
+<p><a href="/pictures">Back to Pictures</a></p>

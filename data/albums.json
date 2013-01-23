@@ -1,0 +1,8 @@
+[
+	{"id":"album-1", "name":"Test Album 1", "description": "lorem ipsum", "pictures":[
+		"1", "2", "3", "4", "5"
+	]},
+	{"id":"album-2", "name":"Toto2Toto", "description": "lorem ipsum dala toto", "pictures":[
+		"1", "2", "3", "4", "5", "6"
+	]}
+]

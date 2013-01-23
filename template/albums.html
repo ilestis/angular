@@ -1,0 +1,13 @@
+<h1>Pictures</h1>
+
+<p class="lead">Click on a picture to browse through the gallery.</p>
+
+<ul class="thumbnails">
+  <li class="span4" ng-repeat="album in albums">
+    <div class="thumbnail">
+      <img data-src="holder.js/300x200" src="img/albums/{{album.id}}/thumbnail.jpg" alt="{{album.name}} Thumbnail">
+      <h3><a href="/albums/{{album.id}}">{{album.name}}</a></h3>
+      <p>{{album.description}}</p>
+    </div>
+  </li>
+</ul>
