@@ -1,40 +1,26 @@
-function PictureListCtrl($scope) {
-  $scope.pictures = [
-    {"id": "1", "name": "Nexus S",
-     "snippet": "Fast just got faster with Nexus S."},
-    {"id": "1", "name": "Motorola XOOM™ with Wi-Fi",
-     "snippet": "The Next, Next Generation tablet."},
-    {"name": "MOTOROLA XOOM™",
-     "snippet": "The Next, Next Generation tablet."}
-  ];
-}
-
-function AlbumListCtrl($scope, $routeParams) {
-	  $scope.albums = [
-	                     {"id": "1", "name": "Nexus S",
-	                      "snippet": "Fast just got faster with Nexus S.",
-	                      "imageUrl": "none yet"},
-	                     {"id": "2", "name": "Motorola XOOM™ with Wi-Fi",
-	                      "snippet": "The Next, Next Generation tablet.",
-	                      "imageUrl": "none yet"},
-	                     {"id": "3", "name": "MOTOROLA XOOM™",
-	                      "snippet": "The Next, Next Generation tablet.",
-	                      "imageUrl": "none yet"}
-	                   ];
-}
-
-function AlbumDetailCtrl($scope, $routeParams) {
-	$scope.album = $routeParams.albumId;
+function AlbumCtrl($scope, $routeParams, $http, pageService) {
+	pageService.setSelected('pictures');
+	
+	$http.get(rootPath+'data/albums.json').success(function(data) {
+		_.each(data, function(album) {
+			if(album.id == $routeParams.albumID) {
+				$scope.album = album;
+			}
+		});
+	});
+	
 }
 function PictureDetailCtrl($scope, $routeParams) {
 	$scope.picture = $routeParams.pictureId;
 }
-
+	
 /**
  * List of videos
  */
-function VideoListCtrl($scope, $routeParams, $http) {
-	$http.get('data/videos.json').success(function(data) {
+function VideoListCtrl($scope, $routeParams, $http, pageService) {
+	pageService.setSelected('videos');
+	
+	$http.get(rootPath+'data/videos.json').success(function(data) {
 		$scope.videos = data;
 	});
 }
@@ -42,49 +28,65 @@ function VideoListCtrl($scope, $routeParams, $http) {
 /**
  * List of top pictures
  */
-function TopPictureListCtrl($scope, $routeParams, $http) {
-	$http.get('data/top-pictures.json').success(function(data) {
-		$scope.pictures = data;
+function AlbumsCtrl($scope, $routeParams, $http, pageService) {
+	pageService.setSelected('pictures');
+	
+	$http.get(rootPath+'data/albums.json').success(function(data) {
+		$scope.albums = data;
 	});
 }
 
 /*
  * Init homepage view and stuff
  */
-function HomeCtrl($scope, $routeParams, $http, mainService) {
-	/*$http.get('data/categories.json').success(function(data) {
-		$scope.categories = data;
-	});*/
-	console.log(mainService.menu.currentMenu);
+function HomeCtrl($scope, $routeParams, $http, pageService, stateService) {
+	pageService.setSelected('home');
+	
+	$http.get(rootPath+'data/home-pictures.json').success(function(data) {
+		$scope.pictures = data;
+	});
+	
+	$scope.isFirst = function(picture) {
+		return stateService.isFirstCarousel(picture);
+	}
 }
 
 /**
  * Main menu data management
  */
-function MainMenuCtrl($scope, $http) {
-	console.log("called MainMenuCtrl");
+function MainMenuCtrl($scope, $http, pageService) {
 
-	$http.get('data/categories.json').success(function(data) {
+	$http.get(rootPath+'data/categories.json').success(function(data) {
 		$scope.categories = data;
 	});
 
 	$scope.setActiveMenu = function(category) {
-	    $scope.selected = category;
+		pageService.setSelected(category.url);
 	}
 
 	$scope.isSelected = function(category) {
-	    return $scope.selected === category;
+	    return pageService.isSelected(category.url);
 	}
 }
 
 /**
  * About page
  */
-function AboutCtrl($scope) {
+function AboutCtrl($scope, pageService) {
+	pageService.setSelected('about');
 }
 
 /**
  * Contact page
  */
-function ContactCtrl($scope) {
+function ContactCtrl($scope, pageService) {
+	pageService.setSelected('contact');
+}
+
+/** 
+ * Footer
+ */
+function FooterCtrl($scope) {
+	$scope.currentYear = '2013';
+	$scope.copyright = '© Jaysome Pictures';
 }

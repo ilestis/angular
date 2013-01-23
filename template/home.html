@@ -1,2 +1,11 @@
-<button type="button" class="btn" bs-modal="'template/modal.html'">...</button>
-
+<div id="myCarousel" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="item"  ng-repeat="picture in pictures" ng-class="{active  : isFirst(picture)}">
+    	<img src="{{picture.src}}" alt="{{picture.alt}}" />
+    </div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>

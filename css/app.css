@@ -3,3 +3,12 @@
 .active_menu {
 	background-color: #ffe8c9;
 }
+
+.ng-view {
+	min-height: 300px;
+}
+
+.picture-row {
+	margin-left: 0px !important;
+	margin-bottom: 5px;
+}

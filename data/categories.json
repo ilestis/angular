@@ -1,4 +1,5 @@
 [
+    {"name": "Home", "url": "home"},
     {"name": "Pictures", "url": "pictures",
      "sub": [
             {"name": "People", "url": "pictures/people"},

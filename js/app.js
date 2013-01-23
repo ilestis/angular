@@ -1,12 +1,15 @@
-var jaysomepictures = angular.module('jaysomepictures', ['$strap.directives']).
-  config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-  	when('/home', {templateUrl: 'template/home.html', controller: HomeCtrl}).
-  	when('/pictures', {templateUrl: 'template/top-picture-list.html',   controller: TopPictureListCtrl}).
-  	when('/videos', {templateUrl: 'template/video-list.html',   controller: VideoListCtrl}).
-  	when('/albums/:albumID', {templateUrl: 'template/album-detail.html',   controller: AlbumDetailCtrl}).
-    when('/pictures/:pictureId', {templateUrl: 'template/picture-detail.html', controller: PictureDetailCtrl}).
-  	when('/about', {templateUrl: 'template/about.html',   controller: AboutCtrl}).
-  	when('/contact', {templateUrl: 'template/contact.html',   controller: ContactCtrl}).
+var rootPath = '/';
+
+var app = angular.module('jaysome-pictures', ['$strap.directives']).
+  config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+	$routeProvider.
+  	when('/home', {templateUrl: rootPath+'template/home.html', controller: HomeCtrl}).
+  	when('/pictures', {templateUrl: rootPath+'template/albums.html',   controller: AlbumsCtrl}).
+  	when('/videos', {templateUrl: rootPath+'template/video-list.html',   controller: VideoListCtrl}).
+  	when('/albums/:albumID', {templateUrl: rootPath+'template/album.html',   controller: AlbumCtrl}).
+    when('/pictures/:pictureId', {templateUrl: rootPath+'template/picture-detail.html', controller: PictureDetailCtrl}).
+  	when('/about', {templateUrl: rootPath+'template/about.html',   controller: AboutCtrl}).
+  	when('/contact', {templateUrl: rootPath+'template/contact.html',   controller: ContactCtrl}).
     otherwise({redirectTo: '/home'});
+	$locationProvider.html5Mode(true);
 }]);
