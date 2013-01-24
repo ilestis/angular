@@ -42,6 +42,12 @@ function AlbumsCtrl($scope, $routeParams, $http, pageService) {
 function HomeCtrl($scope, $routeParams, $http, pageService, stateService) {
 	pageService.setSelected('home');
 	
+	
+}
+
+function CarouselCtrl($scope, $http) {
+	$scope.carousel_interval = 5000;
+	
 	$http.get(rootPath+'data/home-pictures.json').success(function(data) {
 		$scope.pictures = data;
 	});

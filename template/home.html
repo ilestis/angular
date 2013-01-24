@@ -1,17 +1,11 @@
-<div id="picture-carousel" class="carousel slide">
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <div class="item {{picture.class}}"  ng-repeat="picture in pictures" >
-    	<img ng-src="{{picture.src}}" alt="{{picture.alt}}" />
-    </div>
-  </div>
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#picture-carousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#picture-carousel" data-slide="next">&rsaquo;</a>
-</div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-    //$('#picture-carousel').carousel({interval: 5000});
-});
-</script>
+<div ng-controller="CarouselCtrl">
+  <carousel interval="carousel_interval">
+    <slide ng-repeat="picture in pictures" active="picture.active">
+      <img ng-src="{{picture.src}}" style="margin:auto;">
+      <!-- <div class="carousel-caption">
+        <h4>Slide {{$index}}</h4>
+        <p>{{picture.alt}}</p>
+      </div> -->
+    </slide>
+  </carousel>
+   </div>

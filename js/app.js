@@ -1,6 +1,6 @@
 var rootPath = '/';
 
-var app = angular.module('jaysome-pictures', ['$strap.directives']).
+var app = angular.module('jaysome-pictures', ['ui', 'ui.bootstrap']).
   config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider.
   	when('/home', {templateUrl: rootPath+'template/home.html', controller: HomeCtrl}).
