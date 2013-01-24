@@ -1,11 +1,17 @@
-<div id="myCarousel" class="carousel slide">
+<div id="picture-carousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
-    <div class="item"  ng-repeat="picture in pictures" ng-class="{active  : isFirst(picture)}">
-    	<img src="{{picture.src}}" alt="{{picture.alt}}" />
+    <div class="item {{picture.class}}"  ng-repeat="picture in pictures" >
+    	<img ng-src="{{picture.src}}" alt="{{picture.alt}}" />
     </div>
   </div>
   <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  <a class="carousel-control left" href="#picture-carousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#picture-carousel" data-slide="next">&rsaquo;</a>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    //$('#picture-carousel').carousel({interval: 5000});
+});
+</script>

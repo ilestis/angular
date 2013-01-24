@@ -24,7 +24,6 @@ app.service('stateService', function() {
 	
 	this.isFirstCarousel = function(picture) {
 		if(this.first_carousel_picture === false || this.first_carousel_picture === picture) {
-			_c(picture);
 			this.first_carousel_picture = picture;
 			return true;
 		}

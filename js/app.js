@@ -12,4 +12,4 @@ var app = angular.module('jaysome-pictures', ['$strap.directives']).
   	when('/contact', {templateUrl: rootPath+'template/contact.html',   controller: ContactCtrl}).
     otherwise({redirectTo: '/home'});
 	$locationProvider.html5Mode(true);
-}]);
+  }]);
